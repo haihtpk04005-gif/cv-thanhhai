@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoàng Thanh Hải | Portfolio & CV Cá Nhân</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#0f172a',
+                        accent: '#38bdf8'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+            color: #38bdf8;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @media print {
+            nav, .no-print, footer { display: none !important; }
+            body { background: white !important; color: black !important; }
+            section { padding: 20px 0 !important; page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 antialiased selection:bg-blue-500 selection:text-white">
+
+    <!-- 1. THANH ĐIỀU HƯỚNG (NAVBAR CÓ THỂ NHẤN VÀO ĐỂ LƯỚT XUỐNG) -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80 transition-all">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-2 font-extrabold text-xl tracking-tight text-white">
+                    <span class="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center text-white text-sm">H</span>
+                    <span>ThanhHai<span class="text-cyan-400">.dev</span></span>
+                </a>
+
+                <!-- Các trang/mục bấm vào để chuyển mượt -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                    <a href="#home" class="hover:text-cyan-400 transition">Trang chủ</a>
+                    <a href="#about" class="hover:text-cyan-400 transition">Giới thiệu</a>
+                    <a href="#skills" class="hover:text-cyan-400 transition">Kỹ năng</a>
+                    <a href="#projects" class="hover:text-cyan-400 transition">Dự án thực tế</a>
+                    <a href="#education" class="hover:text-cyan-400 transition">Học vấn</a>
+                    <a href="#contact" class="hover:text-cyan-400 transition">Liên hệ</a>
+                </div>
+
+                <!-- Nút xuất PDF -->
+                <div class="flex items-center gap-3 no-print">
+                    <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold px-4 py-2 rounded-full shadow-lg shadow-blue-500/25 transition flex items-center gap-2">
+                        <i class="fas fa-file-pdf"></i> Xuất PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. TRANG CHỦ / HERO SECTION -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1920&q=80" alt="Server Background" class="w-full h-full object-cover opacity-15">
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/90 to-slate-950"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-cyan-400 text-xs font-semibold tracking-wide">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                        Sẵn sàng cho cơ hội Thực tập & Làm việc IT
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+                        Xin chào, tôi là <br>
+                        <span class="bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-300 bg-clip-text text-transparent">
+                            Hoàng Thanh Hải
+                        </span>
+                    </h1>
+
+                    <div class="text-lg sm:text-2xl font-semibold text-slate-300 h-8">
+                        Tôi là <span id="typing-text" class="text-cyan-400 typing-cursor"></span>
+                    </div>
+
+                    <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Sinh viên chuyên ngành <strong class="text-slate-200">Quản trị Mạng & Hệ thống</strong> tại Trường Cao đẳng FPT Polytechnic Tây Nguyên (Sinh ngày 09/11/2005). Đam mê xây dựng hạ tầng máy chủ ổn định và giải pháp công nghệ số.
+                    </p>
+
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-2 no-print">
+                        <a href="#projects" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold shadow-lg shadow-blue-600/30 transition flex items-center gap-2">
+                            <i class="fas fa-rocket"></i> Xem dự án của tôi
+                        </a>
+                        <a href="#contact" class="px-6 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-white font-semibold transition flex items-center gap-2">
+                            <i class="fas fa-paper-plane text-cyan-400"></i> Liên hệ ngay
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hình ảnh đại diện cá nhân -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-3xl blur opacity-40 group-hover:opacity-75 transition duration-500"></div>
+                        <div class="relative w-72 h-80 sm:w-80 sm:h-96 rounded-3xl overflow-hidden bg-slate-900 border-2 border-slate-700/80 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80" alt="Hoàng Thanh Hải" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <p class="text-white font-bold text-lg">Hoàng Thanh Hải</p>
+                                <p class="text-cyan-400 text-xs flex items-center gap-1.5">
+                                    <i class="fas fa-map-marker-alt"></i> Buôn Ma Thuột, Đắk Lắk
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. TRANG GIỚI THIỆU (ABOUT SECTION) -->
+    <section id="about" class="py-20 bg-slate-900/50 border-y border-slate-800/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <h2 class="text-3xl font-extrabold text-white">Giới Thiệu Bản Thân</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative group">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80" alt="Workspace" class="w-full h-80 object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-blue-950/30"></div>
+                </div>
+
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-white">Lý lịch & Mục tiêu nghề nghiệp</h3>
+                    <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+                        Chào bạn, tôi là <strong>Hoàng Thanh Hải</strong> (sinh ngày 09/11/2005). Hiện tôi là sinh viên chuyên ngành Quản trị Mạng & Hệ thống tại Trường Cao đẳng FPT Polytechnic Tây Nguyên. Tôi có tinh thần tự học cao, ham học hỏi các công nghệ hạ tầng máy chủ và luôn sẵn sàng đối mặt với thử thách kỹ thuật.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 flex items-center gap-3">
+                            <i class="fas fa-user text-cyan-400 text-lg w-6 text-center"></i>
+                            <div>
+                                <p class="text-xs text-slate-400">Họ và tên</p>
+                                <p class="text-sm font-semibold text-white">Hoàng Thanh Hải</p>
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 flex items-center gap-3">
+                            <i class="fas fa-birthday-cake text-cyan-400 text-lg w-6 text-center"></i>
+                            <div>
+                                <p class="text-xs text-slate-400">Ngày sinh</p>
+                                <p class="text-sm font-semibold text-white">09/11/2005</p>
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 flex items-center gap-3">
+                            <i class="fas fa-phone-alt text-cyan-400 text-lg w-6 text-center"></i>
+                            <div>
+                                <p class="text-xs text-slate-400">Điện thoại / Zalo</p>
+                                <p class="text-sm font-semibold text-white">0869 022 747</p>
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 flex items-center gap-3">
+                            <i class="fas fa-university text-cyan-400 text-lg w-6 text-center"></i>
+                            <div>
+                                <p class="text-xs text-slate-400">Trường</p>
+                                <p class="text-sm font-semibold text-white">FPT Polytechnic Tây Nguyên</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. TRANG KỸ NĂNG (SKILLS SECTION) -->
+    <section id="skills" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <h2 class="text-3xl font-extrabold text-white">Kỹ Năng Chuyên Môn</h2>
+                <p class="text-slate-400 mt-2 text-sm">Các công nghệ và hạ tầng kỹ thuật đã thực hành</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl hover:border-blue-500/50 transition group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition">
+                        <i class="fab fa-windows"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Quản trị Hệ thống</h3>
+                    <p class="text-slate-400 text-sm mb-4">Windows Server, Active Directory, GPO, DFS, FSRM quản lý tài nguyên mạng.</p>
+                    <div class="w-full bg-slate-800 h-2 rounded-full"><div class="bg-blue-500 h-2 rounded-full" style="width: 90%"></div></div>
+                </div>
+
+                <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl hover:border-cyan-500/50 transition group">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Ảo hóa & Web</h3>
+                    <p class="text-slate-400 text-sm mb-4">VMware Workstation, Docker container, Nginx web server, cơ sở dữ liệu MySQL.</p>
+                    <div class="w-full bg-slate-800 h-2 rounded-full"><div class="bg-cyan-500 h-2 rounded-full" style="width: 85%"></div></div>
+                </div>
+
+                <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl hover:border-teal-500/50 transition group">
+                    <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Công cụ & Hỗ trợ</h3>
+                    <p class="text-slate-400 text-sm mb-4">Git/GitHub, IT Helpdesk, cài đặt hệ điều hành bằng Rufus, tin học văn phòng.</p>
+                    <div class="w-full bg-slate-800 h-2 rounded-full"><div class="bg-teal-500 h-2 rounded-full" style="width: 88%"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. TRANG DỰ ÁN CÓ HÌNH ẢNH (PROJECTS SECTION) -->
+    <section id="projects" class="py-20 bg-slate-900/50 border-y border-slate-800/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <h2 class="text-3xl font-extrabold text-white">Dự Án Thực Tế</h2>
+                <p class="text-slate-400 mt-2 text-sm">Các mô hình hệ thống và bài tập lớn đã triển khai</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition group flex flex-col">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80" alt="Server Lab" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute top-3 right-3 bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded-md">System Admin</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold text-white mb-2">Hạ tầng Mạng Doanh nghiệp</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed flex-1">
+                            Xây dựng Domain Controller trên VMware, cấu hình AD DS, chính sách nhóm GPO, đồng bộ thư mục DFS và kiểm soát tệp tin bằng FSRM.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-cyan-500/50 transition group flex flex-col">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=800&q=80" alt="Docker Nginx" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute top-3 right-3 bg-cyan-600 text-white text-xs font-bold px-2.5 py-1 rounded-md">DevOps</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold text-white mb-2">Web Server với Docker & Nginx</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed flex-1">
+                            Đóng gói ứng dụng web và cơ sở dữ liệu MySQL vào container, cấu hình Nginx Reverse Proxy tối ưu hiệu năng và bảo mật.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-teal-500/50 transition group flex flex-col">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80" alt="Odoo Website" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute top-3 right-3 bg-teal-600 text-white text-xs font-bold px-2.5 py-1 rounded-md">ERP & Web</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold text-white mb-2">Vận hành Website & Odoo</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed flex-1">
+                            Xây dựng trang web thương mại điện tử trên nền tảng Odoo, kết hợp thiết kế ấn phẩm đồ họa và quy trình vận hành trực tuyến.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. TRANG HỌC VẤN (EDUCATION SECTION) -->
+    <section id="education" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <h2 class="text-3xl font-extrabold text-white">Học Vấn & Quá Trình</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 shadow-lg">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs font-bold text-cyan-400 uppercase">2023 - Hiện tại</span>
+                        <span class="text-xs bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded">Sinh viên</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">Trường Cao đẳng FPT Polytechnic Tây Nguyên</h3>
+                    <p class="text-sm text-slate-300 font-medium mt-1">Chuyên ngành: Quản trị Mạng & Hệ thống</p>
+                    <p class="text-slate-400 text-sm mt-2">
+                        Tích lũy kiến thức nền tảng vững chắc về hệ thống máy chủ, quản trị mạng doanh nghiệp và xử lý sự cố thiết bị phần cứng/phần mềm.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. TRANG LIÊN HỆ (CONTACT SECTION) -->
+    <section id="contact" class="py-20 bg-gradient-to-b from-slate-900/50 to-slate-950 border-t border-slate-800/60">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <h2 class="text-3xl font-extrabold text-white">Liên Hệ Với Tôi</h2>
+            <p class="text-slate-400 mt-3 max-w-xl mx-auto text-sm sm:text-base">
+                Sẵn sàng trao đổi cơ hội hợp tác trong lĩnh vực Quản trị Hệ thống và IT Support!
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10">
+                <a href="tel:0869022747" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 p-6 rounded-2xl transition group">
+                    <div class="w-12 h-12 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl mx-auto mb-3 group-hover:scale-110 transition">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-sm">Điện thoại / Zalo</h3>
+                    <p class="text-cyan-400 text-sm mt-1">0869 022 747</p>
+                </a>
+
+                <a href="mailto:hoangthanhhai1148n@gmail.com" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 p-6 rounded-2xl transition group">
+                    <div class="w-12 h-12 rounded-full bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mx-auto mb-3 group-hover:scale-110 transition">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-sm">Email</h3>
+                    <p class="text-cyan-400 text-sm mt-1">emailcuaban@gmail.com</p>
+                </a>
+
+                <a href="https://github.com/haihtpk04005-gif" target="_blank" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 p-6 rounded-2xl transition group">
+                    <div class="w-12 h-12 rounded-full bg-teal-500/10 text-teal-400 flex items-center justify-center text-xl mx-auto mb-3 group-hover:scale-110 transition">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-sm">GitHub</h3>
+                    <p class="text-cyan-400 text-sm mt-1">haihtpk04005-gif</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-6 border-t border-slate-900 text-center text-xs text-slate-500">
+        <p>© 2026 Hoàng Thanh Hải — FPT Polytechnic Tây Nguyên. Đã xuất bản lên GitHub Pages.</p>
+    </footer>
+
+    <!-- SCRIPT CHẠY HIỆU ỨNG CHỮ VÀ SCROLL -->
+    <script>
+        const roles = [
+            "Sinh viên Quản trị Mạng & Hệ thống",
+            "System Administrator (Windows/Linux)",
+            "IT Helpdesk & Kỹ thuật Hạ tầng"
+        ];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById("typing-text");
+
+        function typeEffect() {
+            const currentRole = roles[roleIndex];
+            if (isDeleting) {
+                typingElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                typeSpeed = 1800;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                typeSpeed = 400;
+            }
+            setTimeout(typeEffect, typeSpeed);
+        }
+        document.addEventListener("DOMContentLoaded", typeEffect);
+
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll(".reveal");
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll();
+    </script>
+</body>
+</html>
